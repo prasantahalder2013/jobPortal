@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-sm-4">
+  	<%= link_to "New Vacancy", new_org_admins_vacancy_path, class: "btn btn-primary" %>
+  </div>
+
+  <h2>Vacancy List</h2>
+  <% if @vacancies.present? %>          
+	  <table class="table table-bordered">
+	    <thead>
+	      <tr>
+	        <th>Title</th>
+	        <th>Details</th>
+	        <th>Experience</th>
+	        <th>Required Skills</th>
+	        <th>Number Of Vacancies</th>
+	        <th>Approved Status</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <% @vacancies.each do |vacancy| %>
+	      <tr>
+	        <td><%= vacancy.title %></td>
+	        <td><%= vacancy.details %></td>
+	        <td><%= vacancy.experience %></td>
+	        <td><%= vacancy.required_skills %></td>
+	        <td><%= vacancy.no_of_vacancies %></td>
+	        <td><%= vacancy.is_approved %></td>
+	      </tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+  <% else %>
+  	<p>No Data Found</p>
+  <% end %>
+</div>

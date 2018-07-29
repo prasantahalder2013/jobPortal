@@ -1,0 +1,33 @@
+<div class="row">
+  <h2>Application List</h2>
+  <% if @job_applications.present? %>          
+	  <table class="table table-bordered">
+	    <thead>
+	      <tr>
+	        <th>Name</th>
+	        <th>Email</th>
+	        <th>Job Title</th>
+	        <th>Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <% @job_applications.each do |job_application| %>
+	      <tr>
+	        <td><%= job_application.name %></td>
+	        <td><%= job_application.email %></td>
+	        <td><%= job_application.vacancy.title %></td>
+	        <td>
+	        	<% if job_application.may_invite? %>
+	        		<%= link_to "Invite", edit_org_admins_job_application_path(job_application.id), class: "btn btn-primary" %>
+	        	<% else %>
+	        	 Invited
+	        	<% end %>
+	        </td>
+	      </tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+  <% else %>
+  	<p>No Data Found</p>
+  <% end %>
+</div>

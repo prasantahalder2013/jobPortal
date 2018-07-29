@@ -1,0 +1,25 @@
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <% if current_org_admin.present? %>
+        <li class="active"><%= link_to "Vacancy", root_path %></li>
+        <li><%= link_to "Applications",  org_admins_job_applications_path %></li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_admin.present? || current_org_admin.present? %>
+       <% if current_admin.present? %>
+        <li><%= link_to "<span class='glyphicon glyphicon-log-in'>Logout</span>".html_safe, destroy_admin_session_path, :method => 'delete' %></li></li>
+       <% else %>
+        <li><%= link_to "<span class='glyphicon glyphicon-log-in'>Logout</span>".html_safe, destroy_org_admin_session_path, :method => 'delete' %></li></li>
+       <% end %>
+      <% else %>
+        <li><%= link_to "<span class='glyphicon glyphicon-log-in'>Admin Login</span>".html_safe, new_admin_session_path %></li>
+        <li><%= link_to "<span class='glyphicon glyphicon-log-in'>User Login</span>".html_safe, new_org_admin_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav> 

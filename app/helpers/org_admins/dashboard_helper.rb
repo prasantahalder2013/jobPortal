@@ -1,0 +1,2 @@
+module OrgAdmins::DashboardHelper
+end

@@ -1,0 +1,33 @@
+<h2>Job List</h2>
+  <% if @vacancies.present? %>          
+	  <table class="table table-bordered">
+	    <thead>
+	      <tr>
+	        <th>Title</th>
+	        <th>Details</th>
+	        <th>Experience</th>
+	        <th>Required Skills</th>
+	        <th>Number Of Vacancies</th>
+	        <th>Organization Name</th>
+	        <th>Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <% @vacancies.each do |vacancy| %>
+	      <tr>
+	        <td><%= vacancy.title %></td>
+	        <td><%= vacancy.details %></td>
+	        <td><%= vacancy.experience %></td>
+	        <td><%= vacancy.required_skills %></td>
+	        <td><%= vacancy.no_of_vacancies %></td>
+	        <td><%= vacancy.organization.name %></td>
+	        <td>
+	          <%= link_to "Apply", new_job_job_application_path(job_id: vacancy.id), class: "btn btn-primary" %>
+	        </td>
+	      </tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+  <% else %>
+  	<p>No job Found</p>
+  <% end %>

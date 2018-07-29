@@ -1,0 +1,5 @@
+<p>Hi <%= @candidate.name %> </p>
+<p>Your interview schedule at <%= @candidate.date_time %></p>
+<p><%= link_to "Accept", accept_invitation_url(id: @candidate.id), class: "btn btn-primary" %></p>
+<p><%= link_to "Reject", reject_invitation_url(id: @candidate.id), class: "btn btn-primary" %></p>
+<p>Thanks</p>

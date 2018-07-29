@@ -1,0 +1,40 @@
+<h1>New vacancies</h1>
+<%= form_for @vacancy, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+   <% flash.each do |name, msg| %>
+  <% if msg.class == Array %>
+    <% msg.each do |message| %>
+      <%= content_tag :div, message, :id => "flash_#{name}" %>
+    <% end %>
+  <% else %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+<% end %>
+  <div class="form-group">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :details %><br />
+    <%= f.text_area :details %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :experience %><br />
+    <%= f.text_field :experience %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :required_skills %><br />
+    <%= f.text_field :required_skills %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :no_of_vacancies %><br />
+    <%= f.text_field :no_of_vacancies %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

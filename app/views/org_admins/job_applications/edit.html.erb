@@ -1,0 +1,37 @@
+<h1>Invite Candidate</h1>
+
+<%= form_for @job_application, url: {action: "update"}, html: {class: "nifty_form"} do |f| %>
+   <% flash.each do |name, msg| %>
+  <% if msg.class == Array %>
+    <% msg.each do |message| %>
+      <%= content_tag :div, message, :id => "flash_#{name}" %>
+    <% end %>
+  <% else %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <% end %>
+<% end %>
+<div class="row">
+<div class='col-sm-6'>
+    <div class="form-group">
+        <div class='input-group date' id='datetimepicker1'>
+            <%= f.text_field :date_time,  class: "form-control"%>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
